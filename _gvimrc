@@ -1,0 +1,71 @@
+"** システム設定 **
+set nocompatible
+set noundofile
+set noswapfile                          "swpの作成無効化
+set nobackup                            "~の作成無効化
+set writebackup                         "上書き成功時に~を削除
+set clipboard+=unnamed,autoselect       "クリップボードを共有
+
+"** 文字コード設定 **
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
+set termencoding=utf-8
+scriptencoding utf-8
+
+"** 改行コード設定 **
+set fileformat=unix
+set fileformats=unix,dos,mac
+
+"** 表示設定 **
+syntax on                               "ハイライト表示
+set title                               "タイトル
+set number                              "行番号
+set ruler
+set guifont=MigMix\ 1M:h11              "半角文字
+set guifontwide=MigMix\ 1M:h11          "全角文字
+set lines=44
+set columns=120
+
+"** 不可視文字表示設定 **
+set list
+set listchars=tab:^\ ,eol:$,extends:>,precedes:<
+
+"** 全角スペース表示設定 **
+augroup highlightDoubleByteSpace
+  autocmd!
+  autocmd VimEnter,Colorscheme * highlight DoubleByteSpace cterm=none ctermbg=LightMagenta gui=none guibg=LightMagenta
+  autocmd BufNewFile,BufRead * match DoubleByteSpace /　/
+augroup END
+
+"** メニュー表示設定 **
+source $VIMRUNTIME/delmenu.vim
+set langmenu=ja_jp.utf-8
+source $VIMRUNTIME/menu.vim
+
+"** カラースキーマ設定 **
+colorscheme molokai
+let g:molokai_original=1
+set background=dark
+hi SpecialKey gui=none
+hi Special gui=none
+
+"** 入力設定 **
+set tabstop=4                           "タブ文字幅
+set softtabstop=4
+set shiftwidth=4                        "インデント幅
+set noexpandtab                         "タブ文字無効
+set smartindent
+set smarttab
+
+"** ファイル別設定 **
+filetype on
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.c    setlocal tabstop=4 softtabstop=4 shiftwidth=4 cindent
+    autocmd BufNewFile,BufRead *.cpp  setlocal tabstop=4 softtabstop=4 shiftwidth=4 cindent
+    autocmd BufNewFile,BufRead *.perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.v    setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.vhd  setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
