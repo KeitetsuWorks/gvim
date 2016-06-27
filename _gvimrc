@@ -54,7 +54,7 @@ hi Special gui=none
 set tabstop=4                           "タブ文字幅
 set softtabstop=4
 set shiftwidth=4                        "インデント幅
-set noexpandtab                         "タブ文字無効
+set expandtab                           "タブ文字無効
 set smartindent
 set smarttab
 
